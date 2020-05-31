@@ -1,0 +1,11 @@
+Another potentially useful question comes from predicting if the plane was damaged based on the size of the bird, the weather, the phase of the flight, and other time independent variables.
+
+The challenge with this comes from the small proportion of strikes that result in damage: Only 6% of strikes result in damage, meaning that simply predicting no damage every time achieves high overall accuracy. However, it may be useful to be able to provide some accurate predictions of damage, even if we have to reduce the overall accuracy.
+
+The center plot shows a fairly deep neural net trained on the data, and the best model it found was essentially the constant predictor.
+
+To address this, a balanced bagging method (with decision trees) was used to under sample the strikes without damage and thus emphasize the damaging strikes more heavily. This has the effect of slightly reducing the accuracy by introducing more false negatives, but greatly increases the number of true positives, as illustrated on the left.
+
+It is also possible to boost the number damaging strikes with an oversampling method similar to ADABoost named ADASYN. Using this with the same kind of neural net gives a similar improvement in identification of damaging strikes alongside a small decrease in overall accuracy, as shown on the right.
+
+These techniques allow us to predict damaging strikes fairly well, though quantifying the relevant features is difficult with the classification methods used here.
